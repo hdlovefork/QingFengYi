@@ -16,6 +16,8 @@ class ImportHelper
 
     public static function load($lib)
     {
+        $class = substr($lib, strrpos($lib, '\\')+1);
+        if(class_exists($class)) return;
         if (file_exists($filename = APPPATH . $lib . '.php')) {
             include $filename;
         }

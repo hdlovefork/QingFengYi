@@ -203,17 +203,17 @@ $config = array(
     'uc/home/index' => array(
         array(
             'field' => 'wxkey',
-            'label' => '微信APPKEY',
+            'label' => '微信AppID',
             'rules' => 'required|min_length[10]',
         ),
         array(
             'field' => 'wxsecret',
-            'label' => '微信SECRET',
+            'label' => '微信AppSecret',
             'rules' => 'required|min_length[10]',
         ),
         array(
             'field' => 'tbpid',
-            'label' => '淘宝PID',
+            'label' => '淘宝pid',
             'rules' => array(
                 'required', 'min_length[10]',
                 array(
@@ -230,7 +230,7 @@ $config = array(
             ),
         ),
         array(
-            'field' => 'dtkpid',
+            'field' => 'dtkkey',
             'label' => '大淘客APIKEY',
             'rules' => 'required|min_length[10]',
         ),

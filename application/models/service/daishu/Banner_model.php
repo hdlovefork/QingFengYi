@@ -1,11 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: hdlovefork
  * Date: 2017-12-30
  * Time: 10:30
  */
-require_once('DaiShu_model.php');
+
+include_once 'DaiShu_model.php';
 
 class Banner_model extends DaiShu_model
 {

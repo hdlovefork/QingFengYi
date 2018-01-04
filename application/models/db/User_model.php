@@ -6,7 +6,8 @@
  * Date: 2017-12-11
  * Time: 16:18
  */
-require_once('DB_model.php');
+
+include_once 'DB_model.php';
 
 class User_model extends DB_model
 {

@@ -20,26 +20,26 @@
                 <div class="layui-form-item">
                     <label for="L_appkey" class="layui-form-label fly-form-label-md">清风易APIKEY</label>
                     <div class="layui-input-inline">
-                        <span style="margin-left:10px;height: 38px;line-height:38px;color:blue;font-size:18px"><?= $this->auth->dtk_key ?></span>
+                        <span style="margin-left:10px;height: 38px;line-height:38px;color:blue;font-size:18px"><?= $this->auth->app_key ?></span>
                     </div>
                 </div>
                 <?= form_open('uc') ?>
                 <div class="layui-form-item">
-                    <label for="L_wxkey" class="layui-form-label fly-form-label-md">微信KEY</label>
+                    <label for="L_wxkey" class="layui-form-label fly-form-label-md">微信AppID</label>
                     <div class="layui-input-inline fly-input-inline-md">
                         <?= form_input(['id' => "L_wxkey", 'name' => "wxkey", 'required' => '', 'data-label' => '微信KEY', 'lay-verify' => "required|checkLength", 'placeholder' => "微信公众平台申请", 'autocomplete' => "off", 'class' => "layui-input"], set_value('wxkey') ?: $this->auth->wx_key) ?>
                         <span class="fly-text-error"><?= form_error('wxkey') ?></span>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label for="L_wxsecret" class="layui-form-label fly-form-label-md">微信SECRET</label>
+                    <label for="L_wxsecret" class="layui-form-label fly-form-label-md">微信AppSecret</label>
                     <div class="layui-input-inline fly-input-inline-md">
                         <?= form_input(['id' => "L_wxsecret", 'name' => "wxsecret", 'required' => '', 'data-label' => '微信SECRET', 'lay-verify' => "required|checkLength", 'placeholder' => "微信公众平台申请", 'autocomplete' => "off", 'class' => "layui-input"], set_value('wxsecret') ?: $this->auth->wx_secret) ?>
                         <span class="fly-text-error"><?= form_error('wxsecret') ?></span>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label for="L_tbpid" class="layui-form-label fly-form-label-md">淘宝PID</label>
+                    <label for="L_tbpid" class="layui-form-label fly-form-label-md">淘宝pid</label>
                     <div class="layui-input-inline fly-input-inline-md">
                         <?= form_input(['id' => "L_tbpid", 'name' => "tbpid", 'required' => '', 'data-label' => '淘宝PID', 'lay-verify' => "required|checkLength|checkPID", 'placeholder' => "格式：mm_xxx_xxx_xxx", 'autocomplete' => "off", 'class' => "layui-input"], set_value('tbpid') ?: $this->auth->tb_pid) ?>
                         <span class="fly-text-error"><?= form_error('tbpid') ?></span>
@@ -51,8 +51,8 @@
                 <div class="layui-form-item">
                     <label for="L_dtkkey" class="layui-form-label fly-form-label-md">大淘客APIKEY</label>
                     <div class="layui-input-inline fly-input-inline-md">
-                        <?= form_input(['id' => "L_dtkkey", 'name' => "dtkpid", 'required' => '', 'data-label' => '大淘客APIKEY', 'lay-verify' => "required|checkLength", 'placeholder' => "大淘客申请的APIKEY", 'autocomplete' => "off", 'class' => "layui-input"], set_value('dtkpid') ?: $this->auth->dtk_key) ?>
-                        <span class="fly-text-error"><?= form_error('dtkpid') ?></span>
+                        <?= form_input(['id' => "L_dtkkey", 'name' => "dtkkey", 'required' => '', 'data-label' => '大淘客APIKEY', 'lay-verify' => "required|checkLength", 'placeholder' => "大淘客申请的APIKEY", 'autocomplete' => "off", 'class' => "layui-input"], set_value('dtkkey') ?: $this->auth->dtk_key) ?>
+                        <span class="fly-text-error"><?= form_error('dtkkey') ?></span>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -65,7 +65,8 @@
                 <div class="layui-form-item">
                     <label for="L_pass" class="layui-form-label">新密码</label>
                     <div class="layui-input-inline">
-                        <input type="password" id="L_pass" name="pass" required lay-verify="required|pass" autocomplete="off"
+                        <input type="password" id="L_pass" name="pass" required lay-verify="required|pass"
+                               autocomplete="off"
                                class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">6到20个字符</div>
@@ -104,8 +105,8 @@
                 /^[\S]{6,20}$/,
                 "密码长度应为6~20个字符，且不能包含空格"
             ],
-            repass:function (value) {
-                if($('#L_pass').val()!==value){
+            repass: function (value) {
+                if ($('#L_pass').val() !== value) {
                     return '两次输入的密码不一致';
                 }
             }

@@ -6,7 +6,7 @@
  * Date: 2017-12-11
  * Time: 15:44
  */
-require_once('DB_model.php');
+include_once 'DB_model.php';
 
 class App_model extends DB_model
 {
@@ -29,6 +29,15 @@ class App_model extends DB_model
     public function get_by_email($email)
     {
         return $this->db->get_where(self::TABLE_APP, ['email' => $email], 1)->row_array();
+    }
+
+    public function update_key($id,$data){
+        $update_data['wx_key'] = trim($data['wxkey']);
+        $update_data['wx_secret'] = trim($data['wxsecret']);
+        $update_data['tb_pid'] = trim($data['tbpid']);
+        $update_data['dtk_key'] = trim($data['dtkkey']);
+        $update_data['update_time'] = mktime();
+        return $this->db->update(self::TABLE_APP,$update_data,['id'=>$id]);
     }
 
     /**

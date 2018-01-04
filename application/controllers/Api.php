@@ -8,8 +8,6 @@
  */
 class Api extends Api_Controller
 {
-    private $dataoke_key='bs3mmhfk2w';
-
     public function __construct($config = 'rest')
     {
         parent::__construct($config);
@@ -21,64 +19,6 @@ class Api extends Api_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('', '');
         $this->load->model(['db/user_model']);
-    }
-
-    public function goods_get()
-    {
-        $this->form_validation->set_data($this->get());
-        if ($this->form_validation->run() === FALSE) {
-            throw new BaseException(array('error_msg' => $this->form_validation->error_string()));
-        }
-        $page = $this->get('page');
-        $cache_key = strtr($this->uri->ruri_string(), '/', '_');
-        if (!($res = $this->cache->get($cache_key))) {
-            $res = curl_get("http://api.dataoke.com/index.php?r=Port/index&type=total&appkey={$this->dataoke_key}&v=2&page={$page}");
-            $res = json_decode($res, true);
-            $r = $this->cache->save($cache_key, $res, 60);
-            log_message('debug', '缓存保存结果：' . $r);
-        }
-        $this->response($res);
-    }
-
-    public function qq_get()
-    {
-        $this->form_validation->set_data($this->get());
-        if ($this->form_validation->run() === FALSE) {
-            throw new BaseException(array('error_msg' => $this->form_validation->error_string()));
-        }
-        $page = $this->get('page');
-        $cache_key = $this->uri->ruri_string();
-        if (!$res = $this->cache->get($cache_key)) {
-            $res = curl_get("http://api.dataoke.com/index.php?r=goodsLink/qq&type=qq_quan&appkey={$this->dataoke_key}&v=2&page={$page}");
-            $res = json_decode($res, true);
-            $this->cache->save($cache_key, $res, 20);
-        }
-        $this->response($res);
-    }
-
-    public function www_get()
-    {
-        $this->form_validation->set_data($this->get());
-        if ($this->form_validation->run() === FALSE) {
-            throw new BaseException(array('error_msg' => $this->form_validation->error_string()));
-        }
-        $page = $this->get('page');
-        $cache_key = $this->uri->ruri_string();
-        if (!$res = $this->cache->get($cache_key)) {
-            $res = curl_get("http://api.dataoke.com/index.php?r=goodsLink/www&type=www_quan&appkey={$this->dataoke_key}&v=2&page={$page}");
-            $res = json_decode($res, true);
-            $this->cache->save($cache_key, $res, 20);
-        }
-        $this->response($res);
-    }
-
-    public function convert_get()
-    {
-        $this->load->helper('urlconvert');
-        $goods_id = $this->get('num_id');
-        $pid = "mm_32805119_40744564_164568086";
-        $cookie = "t=cffce85203f8ab29e8f796e22511b64e; cna=HWaeEmEMciMCASoxYrEWWSAr; _umdata=2FB0BDB3C12E491DBC83196CDF6FCE01FE773ED01F17262EEC5E846A22A5691204D73340F5E6093CCD43AD3E795C914CC82E94AFE139CF3C4B371B031A3B3EAB; cookie2=16aefab1b412f68f6c4d9efb054fb35f; v=0; _tb_token_=77531113ef8ae; alimamapwag=TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzYyLjAuMzIwMi45NCBTYWZhcmkvNTM3LjM2; cookie32=d2cfc00b42999947b511d47cc563abae; alimamapw=XQZaDkBRBwtAWmpUBgYGAgVVAlJUVAENUwdUAQBXBFEBVlVVBAQCUFJRAw%3D%3D; cookie31=MzI4MDUxMTksaGRsb3ZlZm9yayxoZGxvdmVmb3JrQDE2My5jb20sVEI%3D; login=V32FPkk%2Fw0dUvg%3D%3D; rurl=aHR0cHM6Ly9wdWIuYWxpbWFtYS5jb20v; isg=AkhIIzOJhkci8Or4y1T4yt_FGbaaWa2cv4A6KAL5k0O23ehHqgF8i97TKYNW";
-        $this->response(convertTbkUrl($goods_id, $pid, $cookie));
     }
 
     /**
@@ -106,32 +46,52 @@ class Api extends Api_Controller
         $this->response(['is_valid' => !empty($exist)]);
     }
 
-    public function banners_get(){
+    /**
+     * 获取首页banners
+     */
+    public function banners_get()
+    {
         $this->load->model('service/daishu/banner_model');
         $res = $this->banner_model->get_all();
         $this->response($res);
     }
 
-    public function home_get(){
+    /**
+     * 首页数据
+     */
+    public function home_get()
+    {
+        $this->output->cache(10);
         $this->load->model(['page/home_model']);
         $data = [
-            'banners'=>$this->home_model->banners()
+            'banners' => $this->home_model->banners()
         ];
         $this->response($data);
     }
 
-    public function search_get(){
-        $this->load->model('service/search_model');
+    /**
+     * 搜索商品
+     */
+    public function search_get($keyword)
+    {
     }
 
-    public function test_get(){
-        echo $this->cache->file->save('id','xxxx');
-        echo $this->cache->file->get('id');
-//        $this->benchmark->mark('test_start');
-//        for ($i = 0;$i<100000;$i++){
-//            $this->cache->get('id');
-//        }
-//        echo 'test_execute_time: '.$this->benchmark->elapsed_time('test_start');
+    /**
+     * 获取优惠券信息
+     * @param $id
+     */
+    public function quan_get($id){
+        $this->output->cache(10);
+        $this->load->model('page/detail_model');
+        $res = $this->detail_model->get_quan_info($id);
+        $this->response($res);
+    }
+
+    /**
+     * 领券
+     * @param $id
+     */
+    public function ling_get($id){
 
     }
 }

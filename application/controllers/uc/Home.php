@@ -21,7 +21,17 @@ class Home extends UC_Controller
             if($this->form_validation->run()===FALSE){
                 $this->view('home');
             }else{
-                echo '验证成功';
+                $this->load->model('db/app_model');
+                if($this->app_model->update_key($this->auth->id,$this->input->post())){
+                    //更新session中的app数据，否则前台还是显示空数据，因为前台读取的是session值
+                    $app = $this->app_model->get_app($this->auth->app_key);
+                    $this->auth->login($app);
+                    $this->success('保存成功！');
+                    redirect('uc');
+                }else{
+                    $this->error('保存失败！');
+                    $this->view('home');
+                }
             }
         }else{
             if (!$this->session->has_userdata('welcome')) {

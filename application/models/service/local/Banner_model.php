@@ -6,7 +6,7 @@
  * Date: 2017-12-27
  * Time: 18:57
  */
-require_once(APPPATH . 'models/db/DB_model.php');
+include_once APPPATH . 'models/db/DB_model.php';
 
 class Banner_model extends DB_model
 {

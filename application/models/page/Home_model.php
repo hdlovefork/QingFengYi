@@ -10,8 +10,10 @@ require_once ('Page_model.php');
 
 class Home_model extends Page_model
 {
+    protected $service = 'daishu';
+
     public function banners(){
-        $this->load->model('service/daishu/banner_model');
+        $this->load->model("service/{$this->service}/banner_model");
         $res = $this->banner_model->get_all();
         return $res;
     }

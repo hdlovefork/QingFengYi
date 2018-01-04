@@ -6,8 +6,14 @@
  * Time: 19:48
  */
 
+/**
+ * 页面基类
+ * Class Page_model
+ */
 class Page_model extends CI_Model
 {
+    protected $service = 'daishu';
+
     public function to_array($json_str)
     {
         if(is_array($json_str)) return $json_str;
