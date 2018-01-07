@@ -22,6 +22,6 @@ class Banner_model extends DaiShu_model
         if(isset($this->collection, $this->collection['banner'])){
             return $this->collection['banner'];
         }
-        return [];
+        return null;
     }
 }

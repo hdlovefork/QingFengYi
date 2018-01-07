@@ -8,6 +8,8 @@ application/logs/*
 
 !application/*/.htaccess
 
+application/session/*
+
 composer.lock
 contributing.md
 readme.rst

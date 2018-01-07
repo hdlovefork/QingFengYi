@@ -42,9 +42,4 @@ class DaiShu_model extends Remote_model
             log_message('ERROR', '袋鼠首页初始化失败');
         }
     }
-
-    function get_host_url()
-    {
-        return 'https://public2.immmmmm.com';
-    }
 }

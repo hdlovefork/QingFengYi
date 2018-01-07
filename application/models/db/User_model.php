@@ -148,6 +148,11 @@ class User_model extends DB_model
         return $cached_value;
     }
 
+    /**
+     * @param $cached_value
+     * @return mixed
+     * @throws TokenException
+     */
     private function _save_cache($cached_value)
     {
         $this->load->config('app');

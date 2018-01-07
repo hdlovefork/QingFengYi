@@ -61,16 +61,17 @@ class Api extends Api_Controller
      */
     public function home_get()
     {
-        $this->output->cache(10);
+        //$this->output->cache(1);
         $this->load->model(['page/home_model']);
         $data = [
-            'banners' => $this->home_model->banners()
+            'banners' => $this->home_model->banners() ?: $this->home_model->banners()
         ];
         $this->response($data);
     }
 
     /**
      * 搜索商品
+     * @param $keyword string 商品名称
      */
     public function search_get($keyword)
     {
@@ -78,20 +79,59 @@ class Api extends Api_Controller
 
     /**
      * 获取优惠券信息
-     * @param $id
      */
-    public function quan_get($id){
-        $this->output->cache(10);
+    public function quan_post()
+    {
+//        $this->output->cache(10);
         $this->load->model('page/detail_model');
-        $res = $this->detail_model->get_quan_info($id);
+        $res = $this->detail_model->get_quan_info($this->post());
+        $this->response($res);
+    }
+
+    /**
+     * 获取商品详情图片
+     */
+    public function pics_post()
+    {
+//        $this->output->cache(10);
+        $this->load->model('page/detail_model');
+        $res = $this->detail_model->get_detail_pics($this->post());
         $this->response($res);
     }
 
     /**
      * 领券
-     * @param $id
+     * @param $id string 宝贝ID
      */
-    public function ling_get($id){
+    public function ling_get($id)
+    {
 
+    }
+
+    /**
+     * 获取淘口令
+     * $data array ['activity','tbid']
+     */
+    public function tkl_post()
+    {
+        $this->load->model('page/detail_model');
+        $this->load->library('token');
+        //读取当前用户所属APP的PID
+        $data = $this->post();
+        $data['pid'] = $this->token->get_data('tb_pid');
+        $res = $this->detail_model->get_tkl($data);
+        $this->response($res);
+    }
+
+    /**
+     * 获取评论数据
+     * $data array ['tbid','page']
+     * @return void
+     */
+    public function rate_post()
+    {
+        $this->load->model('page/detail_model');
+        $res = $this->detail_model->get_rate($this->post());
+        $this->response($res);
     }
 }

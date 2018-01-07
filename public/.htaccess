@@ -1,6 +1,9 @@
-<IfModule rewrite_module>
+<IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    #apache要这样
+#    RewriteRule ^(.+)$ index.php?s=$1 [L]
+    #本地这样是正常的
     RewriteRule ^(.+)$ index.php/$1 [L]
 </IfModule>

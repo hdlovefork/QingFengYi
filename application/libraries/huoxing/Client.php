@@ -92,9 +92,10 @@ class Client
     /**
      * 请求
      * @param  [type] $request [description]
-     * @return [type]          [description]
+     * @param bool $returnArray 是否转JSON源数据转成ARRAY
+     * @return bool|string|array        [返回数组或string或布尔值]
      */
-    public function execute($request)
+    public function execute($request, $returnArray=TRUE)
     {
         // 获取参数
         $params = array_merge($request->getParams());
@@ -107,14 +108,17 @@ class Client
         $json = $this->curl($url, $params);
 
         if (!$json)
-            return false;
+            return FALSE;
 
         // 转换成json
-        $rs = json_decode($json, true);
-        if (!$rs)
-            return false;
-
-        return $rs;
+        if($returnArray){
+            $rs = json_decode($json, true);
+            if (!$rs)
+                return FALSE;
+            else
+                return $rs;
+        }
+        return $json;
 
     }
 

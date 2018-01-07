@@ -37,6 +37,9 @@ class Token
      */
     public function get_data($key){
         $token = $this->CI->input->post('token');
+        if(!$token){
+            $token = $this->CI->input->get_request_header('token');
+        }
         $vars = $this->CI->cache->get($token);
         if(!$vars){
             throw new TokenException();
@@ -59,6 +62,8 @@ class Token
     /**
      * 获取令牌数据缓存区中的uid值
      * @return mixed
+     * @throws Exception
+     * @throws TokenException
      */
     public function get_uid()
     {

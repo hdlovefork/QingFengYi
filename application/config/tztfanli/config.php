@@ -23,8 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '//wx.cn';
+//$config['base_url'] = '//wx.cn';
 //$config['base_url'] = '//43721.com';
+$config['base_url'] = '//wx.tztfanli.com';
 
 /*
 |--------------------------------------------------------------------------

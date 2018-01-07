@@ -1,13 +1,7 @@
 <?php
 
 
-/**
- * 重写REST_Controller，捕获异常
- * Created by PhpStorm.
- * User: hdlovefork
- * Date: 2017-12-08
- * Time: 21:36
- */
+
 require_once(APPPATH . 'libraries/REST_Controller.php');
 
 //自动加载类
@@ -16,16 +10,27 @@ class ImportHelper
 
     public static function load($lib)
     {
-        $class = substr($lib, strrpos($lib, '\\')+1);
-        if(class_exists($class)) return;
-        if (file_exists($filename = APPPATH . $lib . '.php')) {
+        // log_message('DEBUG', "自动加载类：{$lib}");
+        $filename = APPPATH . $lib . '.php';
+        $filename = strtr($filename, '\\', DIRECTORY_SEPARATOR);
+        if (file_exists($filename)) {
+            // log_message('DEBUG', "成功加载：{$filename}");
             include $filename;
+        }else{
+            // log_message('DEBUG', "加载不成功：{$filename}");
         }
     }
 }
 
 spl_autoload_register(['ImportHelper', 'load'], FALSE, TRUE);
 
+/**
+ * 重写REST_Controller，捕获异常
+ * Created by PhpStorm.
+ * User: hdlovefork
+ * Date: 2017-12-08
+ * Time: 21:36
+ */
 class Api_Controller extends REST_Controller
 {
     public function __construct($config = 'rest')
@@ -33,12 +38,12 @@ class Api_Controller extends REST_Controller
         parent::__construct($config);
         //导入异常类
         $this->load->helper([
-            'exception/baseexception',
-            'exception/tokenexception',
-            'exception/appkeyexception',
-            'exception/wechatexception',
-            'exception/parameterexception',
-            'exception/resourcenotexistexception',
+            'exception/BaseException',
+            'exception/TokenException',
+            'exception/AppKeyException',
+            'exception/WechatException',
+            'exception/ParameterException',
+            'exception/ResourceNotExistException',
         ]);
     }
 
@@ -127,7 +132,7 @@ class Api_Controller extends REST_Controller
             if ($auth_override_class_method[$this->router->class][$this->router->method] === 'token') {
                 //token已经在缓存中？
                 $this->load->library('token');
-                $exist = $this->token->check($this->head('token'));
+                $exist = $this->token->check($this->head('Token'));
                 if (!$exist) {
                     //token不在缓存中则终止程序
                     $this->load->helper([

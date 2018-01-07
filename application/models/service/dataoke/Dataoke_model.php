@@ -10,7 +10,7 @@ include_once APPPATH . 'models/service/Remote_model.php';
 class Dataoke_model extends Remote_model
 {
 
-    protected $key;
+    protected $dtk_key;
 
     /**
      * @var \libraries\daotaoke\DTK_Client
@@ -21,7 +21,7 @@ class Dataoke_model extends Remote_model
     {
         parent::__construct();
         $this->load->config('app');
-        $this->key = $this->config->item('app_dtk_key');
+        $this->dtk_key = $this->config->item('app_dtk_key');
         $this->client = new \libraries\daotaoke\DTK_Client();
     }
 
