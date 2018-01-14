@@ -1,0 +1,55 @@
+{
+  "category": [
+    {
+      "cid": 1,
+      "url": "http://public.immmmmm.com/images/icon/ke_meizhuang.jpg",
+      "name": "化妆品"
+    },
+    {
+      "cid": 2,
+      "url": "http://public.immmmmm.com/images/icon/ke_nvzhuang.jpg",
+      "name": "女装"
+    },
+    {
+      "cid": 3,
+      "url": "http://public.immmmmm.com/images/icon/ke_nanzhuang.jpg",
+      "name": "男装"
+    },
+    {
+      "cid": 4,
+      "url": "http://public.immmmmm.com/images/icon/ke_neiyi.jpg",
+      "name": "内衣"
+    },
+    {
+      "cid": 5,
+      "url": "http://public.immmmmm.com/images/icon/ke_muying.jpg",
+      "name": "母婴"
+    },
+    {
+      "cid": 6,
+      "url": "http://public.immmmmm.com/images/icon/ke_jiaju.jpg",
+      "name": "居家"
+    },
+    {
+      "cid": 7,
+      "url": "http://public.immmmmm.com/images/icon/ke_meishi.jpg",
+      "name": "美食"
+    },
+    {
+      "cid": 8,
+      "url": "http://public.immmmmm.com/images/icon/ke_xiangbao.jpg",
+      "name": "鞄包配饰"
+    },
+    {
+      "cid": 9,
+      "url": "http://public.immmmmm.com/images/icon/ke_wenju.jpg",
+      "name": "文体"
+    },
+    {
+      "cid": 10,
+      "url": "http://public.immmmmm.com/images/icon/ke_shuma.jpg",
+      "name": "数码家电"
+    }
+  ],
+  "curCid": 1
+}

@@ -27,12 +27,36 @@ class Taoapi_model extends Remote_model
         //1：获取二合一地址
         $two_one_url = $this->get_two_one($data);
         if (!$two_one_url) return null;
+        //转换成高佣链接
+        $this->load->library('token');
+        $pid = $this->token->get_data('tb_pid') ?: 'mm_32805119_40744564_164568086';
+        $tbid = $data['tbid'];
+        $chaozhi_token = $this->token->get_data('chaozhi_token');
+        $chaozhi_session = $this->token->get_data('chaozhi_session');
+        $request = new libraries\chaozhi\request\GaoYongGet();
+        $request->addCookie('PHPSESSID', $chaozhi_session);
+        $request->setPid($pid)->setToken($chaozhi_token)->setTbID($tbid);
+        $client = new \libraries\chaozhi\Client();
+        $res = $client->execute($request);
+        if (!$res['result']['data']['coupon_click_url']) {
+            log_message('DEBUG', '获取高佣失败');
+        } else {
+            $two_one_url = $res['result']['data']['coupon_click_url'];
+        }
+        // $two_one_url =  $res['result']['data']['coupon_click_url'] ?: $two_one_url;
         //获取商品信息
-        $logo = $title = null;
-        $tao_data = curl_get("https://hws.m.taobao.com/cache/wdetail/5.0/?id={$data['tbid']}");
-        if ($tao_data && ($tao_data = json_decode($tao_data, TRUE))) {
-            $logo = $tao_data['data']['itemInfoModel']['picsPath'][0];
-            $title = $tao_data['data']['itemInfoModel']['title'];
+        $logo = $data['logo'];
+        $title = $data['title'];
+        //没有传入主图和宝贝标题则访问淘宝服务器获取，该获取不一定能成功
+        //淘宝报错：请检查是否使用了代理软件或 VPN 哦~
+        if (!$logo && !$title) {
+            $tao_data = curl_get("https://hws.m.taobao.com/cache/wdetail/5.0/?id={$data['tbid']}", $http_code);
+            log_message('DEBUG', var_export($tao_data, TRUE));
+            if ($tao_data && ($tao_data = json_decode($tao_data, TRUE))) {
+                $logo = $tao_data['data']['itemInfoModel']['picsPath'][0];
+                $title = $tao_data['data']['itemInfoModel']['title'];
+                log_message('DEBUG', "logo:{$logo}\ntitle:{$title}");
+            }
         }
         //2：转换成淘口令
         $request = new \libraries\huoxing\request\TaobaokeToolTaoBaoPasswordGet();
@@ -58,7 +82,7 @@ class Taoapi_model extends Remote_model
      */
     public function get_rate($data)
     {
-        //1：从商品简单中获取userNumId，作为第2步获取评论的参数
+        //1：从商品简介中获取userNumId，作为第2步获取评论的参数
         $jie = $this->get_jie($data['tbid']);
         $user_num_id = $jie['data']['seller']['userNumId'];
         if (!$user_num_id) return NULL;
@@ -66,9 +90,9 @@ class Taoapi_model extends Remote_model
         $url = "https://rate.tmall.com/list_detail_rate.htm?itemId={$data['tbid']}&sellerId={$user_num_id}&order=3&currentPage={$data['page']}";
         $res = curl_get($url);
         //补全JSON数据的格式
-        $res = '{' . $res .'}';
+        $res = '{' . $res . '}';
         //淘宝是GB2312编码，所以需要转换
-        $res = mb_convert_encoding($res,'UTF-8','GB18030');
+        $res = mb_convert_encoding($res, 'UTF-8', 'GB18030');
         if ($res && ($data = json_decode($res, TRUE))) {
             return $data['rateDetail'];
         }

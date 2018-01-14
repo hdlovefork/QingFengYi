@@ -16,7 +16,8 @@ function curl_get($url, &$httpCode = 0)
     //不做证书校验,部署在linux环境下请改为true
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
+    curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION,TRUE);
     $file_contents = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);

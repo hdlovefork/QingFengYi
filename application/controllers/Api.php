@@ -51,22 +51,21 @@ class Api extends Api_Controller
      */
     public function banners_get()
     {
-        $this->load->model('service/daishu/banner_model');
-        $res = $this->banner_model->get_all();
+        $this->load->model(['page/home_model']);
+        $res = $this->home_model->banners();
         $this->response($res);
     }
 
-    /**
-     * 首页数据
-     */
-    public function home_get()
-    {
-        //$this->output->cache(1);
+    public function homeicons_get(){
         $this->load->model(['page/home_model']);
-        $data = [
-            'banners' => $this->home_model->banners() ?: $this->home_model->banners()
-        ];
-        $this->response($data);
+        $res = $this->home_model->homeicons();
+        $this->response($res);
+    }
+
+    public function topics_get(){
+        $this->load->model(['page/home_model']);
+        $res = $this->home_model->topics();
+        $this->response($res);
     }
 
     /**
@@ -80,32 +79,23 @@ class Api extends Api_Controller
     /**
      * 获取优惠券信息
      */
-    public function quan_post()
+    public function quan_get()
     {
 //        $this->output->cache(10);
         $this->load->model('page/detail_model');
-        $res = $this->detail_model->get_quan_info($this->post());
+        $res = $this->detail_model->get_quan_info($this->get());
         $this->response($res);
     }
 
     /**
      * 获取商品详情图片
      */
-    public function pics_post()
+    public function pics_get()
     {
 //        $this->output->cache(10);
         $this->load->model('page/detail_model');
-        $res = $this->detail_model->get_detail_pics($this->post());
+        $res = $this->detail_model->get_detail_pics($this->get());
         $this->response($res);
-    }
-
-    /**
-     * 领券
-     * @param $id string 宝贝ID
-     */
-    public function ling_get($id)
-    {
-
     }
 
     /**
@@ -128,10 +118,38 @@ class Api extends Api_Controller
      * $data array ['tbid','page']
      * @return void
      */
-    public function rate_post()
+    public function rate_get()
     {
         $this->load->model('page/detail_model');
-        $res = $this->detail_model->get_rate($this->post());
+        $res = $this->detail_model->get_rate($this->get());
+        $this->response($res);
+    }
+
+    /**
+     * 获取活动页面数据
+     * $data ['huodong']
+     */
+    public function huodong_get(){
+        $this->load->model('page/home_model');
+        $res = $this->home_model->huodong($this->get());
+        $this->response($res);
+    }
+
+    /**
+     * 更多优惠，返回一个目录列表
+     */
+    public function category_get(){
+        $this->load->model('page/home_model');
+        $res = $this->home_model->category();
+        $this->response($res);
+    }
+
+    /**
+     * 商品列表页顶部导航菜单
+     */
+    public function listnav_get(){
+        $this->load->model('page/list_model');
+        $res = $this->list_model->list_nav();
         $this->response($res);
     }
 }

@@ -1,0 +1,633 @@
+﻿{
+  "data": {
+    "data": {
+      "tuijian": {
+        "id": "tuijian",
+        "name": "专题推荐"
+      },
+      "nvzhuang": {
+        "id": "nvzhuang",
+        "name": "女装"
+      },
+      "nanzhuang": {
+        "id": "nanzhuang",
+        "name": "男装"
+      },
+      "meizhuang": {
+        "id": "meizhuang",
+        "name": "美妆护理"
+      },
+      "muying": {
+        "id": "muying",
+        "name": "母婴用品"
+      },
+      "peishi": {
+        "id": "peishi",
+        "name": "配饰"
+      },
+      "xiezi": {
+        "id": "xiezi",
+        "name": "鞋包"
+      },
+      "shuma": {
+        "id": "shuma",
+        "name": "数码家电"
+      },
+      "neiyi": {
+        "id": "neiyi",
+        "name": "内衣袜子"
+      },
+      "shipin": {
+        "id": "shipin",
+        "name": "食品"
+      },
+      "wenti": {
+        "id": "wenti",
+        "name": "文体家居"
+      }
+    },
+    "curIndex": "0",
+    "toView": "tuijian",
+    "category": {
+      "tuijian": {
+        "id": "tuijian",
+        "cate": "专题推荐",
+        "banner": "https://img.alicdn.com/imgextra/i4/2053469401/TB2pmr8d_1z01JjSZFCXXXY.XXa_!!2053469401.jpg",
+        "url": "/pages/list/xiaoliang/xiaoliang?get=qtxiaobang&title=【争分夺秒】抢枪抢！",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/cid01.png",
+            "name": "大白菜",
+            "url": "/pages/baicai/list/index/index"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/cid02.png",
+            "name": "好品库",
+            "url": "/pages/api/qingtaoke/list"
+          }
+        ]
+      },
+      "nvzhuang": {
+        "id": "nvzhuang",
+        "cate": "女装",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/1.png",
+            "name": "卫衣",
+            "url": "/pages/baicai/search/search?type=cid&so=女卫衣"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/2.png",
+            "name": "棉服",
+            "url": "/pages/baicai/search/search?type=cid&so=棉服"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/3.png",
+            "name": "毛衣",
+            "url": "/pages/baicai/search/search?type=cid&so=毛衣"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/4.png",
+            "name": "外套",
+            "url": "/pages/baicai/search/search?type=cid&so=外套"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/5.png",
+            "name": "内搭",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/6.png",
+            "name": "连衣裙",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/7.png",
+            "name": "裤装",
+            "url": "/pages/baicai/search/search?type=cid&so=女裤装"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/8.png",
+            "name": "马甲",
+            "url": "/pages/baicai/search/search?type=cid&so=女马甲"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/9.png",
+            "name": "套装",
+            "url": "/pages/baicai/search/search?type=cid&so=女套装"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/10.png",
+            "name": "情侣装",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/11.png",
+            "name": "T恤",
+            "url": "/pages/baicai/search/search?type=cid&so=女T恤"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/12.png",
+            "name": "秋冬半裙",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/13.png",
+            "name": "打底裤",
+            "url": "/pages/baicai/search/search?type=cid&so=女打底裤"
+          }
+        ]
+      },
+      "nanzhuang": {
+        "id": "nanzhuang",
+        "cate": "男装",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/14.png",
+            "name": "卫衣",
+            "url": "/pages/baicai/search/search?type=cid&so=男卫衣"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/15.png",
+            "name": "裤装",
+            "url": "/pages/baicai/search/search?type=cid&so=男裤装"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/16.png",
+            "name": "外套",
+            "url": "/pages/baicai/search/search?type=cid&so=男外套"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/17.png",
+            "name": "毛衣",
+            "url": "/pages/baicai/search/search?type=cid&so=男毛衣"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/18.png",
+            "name": "棒球服",
+            "url": "/pages/baicai/search/search?type=cid&so=男棒球服"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/19.png",
+            "name": "T恤",
+            "url": "/pages/baicai/search/search?type=cid&so=男T恤"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/20.png",
+            "name": "衬衫",
+            "url": "/pages/baicai/search/search?type=cid&so=男衬衫"
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/21.png",
+            "name": "棉服",
+            "url": "/pages/baicai/search/search?type=cid&so=男棉服"
+          }
+        ]
+      },
+      "meizhuang": {
+        "id": "meizhuang",
+        "cate": "美妆护理",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/22.png",
+            "name": "美瞳",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/23.png",
+            "name": "男士护肤",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/24.png",
+            "name": "洁面卸妆",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/25.png",
+            "name": "眼妆",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/26.png",
+            "name": "底妆",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/27.png",
+            "name": "基础护肤",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/28.png",
+            "name": "口红唇膏",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/30.png",
+            "name": "面膜",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/32.png",
+            "name": "防晒隔离",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/33.png",
+            "name": "美甲",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/34.png",
+            "name": "眼部护理",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/54.png",
+            "name": "洗发",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/55.png",
+            "name": "身体护理",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/58.png",
+            "name": "洗护工具",
+            "url": ""
+          }
+        ]
+      },
+      "muying": {
+        "id": "muying",
+        "cate": "母婴用品",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/ke_muying.jpg",
+            "name": "童装",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/icon_tongxie.jpg",
+            "name": "童鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/icon_yunfu.jpg",
+            "name": "孕妇装",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/icon_wanju.jpg",
+            "name": "儿童玩具",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/icon_baoyp.jpg",
+            "name": "宝宝用品",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/icon/icon_naifen.jpg",
+            "name": "奶粉",
+            "url": ""
+          }
+        ]
+      },
+      "peishi": {
+        "id": "peishi",
+        "cate": "配饰",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/35.png",
+            "name": "腰带",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/36.png",
+            "name": "围巾",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/37.png",
+            "name": "墨镜",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/38.png",
+            "name": "手表",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/39.png",
+            "name": "帽子",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/40.png",
+            "name": "耳饰",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/41.png",
+            "name": "手链项链",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/42.png",
+            "name": "发饰",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/43.png",
+            "name": "戒指",
+            "url": ""
+          }
+        ]
+      },
+      "xiezi": {
+        "id": "xiezi",
+        "cate": "鞋包",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/44.png",
+            "name": "小白鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/45.png",
+            "name": "帆布鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/46.png",
+            "name": "运动鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/48.png",
+            "name": "男鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/49.png",
+            "name": "短靴",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/50.png",
+            "name": "雪地靴",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/51.png",
+            "name": "高跟鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/53.png",
+            "name": "拖鞋",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/59.png",
+            "name": "行李箱",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/60.png",
+            "name": "双肩包",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/61.png",
+            "name": "帆布包",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/62.png",
+            "name": "链条包",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/63.png",
+            "name": "单肩包",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/64.png",
+            "name": "钱包",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/65.png",
+            "name": "迷你包",
+            "url": ""
+          }
+        ]
+      },
+      "shuma": {
+        "id": "shuma",
+        "cate": "数码家电",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/66.png",
+            "name": "耳机",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/67.png",
+            "name": "手机壳",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/68.png",
+            "name": "数据线",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/69.png",
+            "name": "移动电源",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/70.png",
+            "name": "手机膜",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/71.png",
+            "name": "电脑配件",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/72.png",
+            "name": "影音电器",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/73.png",
+            "name": "usb周边",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/74.png",
+            "name": "家电",
+            "url": ""
+          }
+        ]
+      },
+      "neiyi": {
+        "id": "neiyi",
+        "cate": "内衣袜子",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/75.png",
+            "name": "文胸",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/76.png",
+            "name": "女士内裤",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/77.png",
+            "name": "睡衣",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/78.png",
+            "name": "打底",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/79.png",
+            "name": "袜子",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/80.png",
+            "name": "男士内裤",
+            "url": ""
+          }
+        ]
+      },
+      "shipin": {
+        "id": "shipin",
+        "cate": "食品",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/81.png",
+            "name": "糖果",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/82.png",
+            "name": "坚果",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/83.png",
+            "name": "面包蛋糕",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/84.png",
+            "name": "减肥瘦身",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/85.png",
+            "name": "风味小吃",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/86.png",
+            "name": "零食礼包",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/87.png",
+            "name": "茶水冲饮",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/88.png",
+            "name": "膨化食品",
+            "url": ""
+          }
+        ]
+      },
+      "wenti": {
+        "id": "wenti",
+        "cate": "文体家居",
+        "detail": [
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/89.png",
+            "name": "秋冬神器",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/90.png",
+            "name": "清洁用品",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/91.png",
+            "name": "收纳用品",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/92.png",
+            "name": "家居装饰",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/93.png",
+            "name": "厨房烹饪",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/94.png",
+            "name": "床上用品",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/95.png",
+            "name": "文具",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/96.png",
+            "name": "图书",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/97.png",
+            "name": "游戏设备",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/98.png",
+            "name": "运动健身",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/99.png",
+            "name": "礼物",
+            "url": ""
+          },
+          {
+            "thumb": "http://public.immmmmm.com/images/cateicon/100.png",
+            "name": "创意玩具",
+            "url": ""
+          }
+        ]
+      }
+    },
+    "fenleiCellId": "0"
+  }
+}

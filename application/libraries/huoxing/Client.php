@@ -1,6 +1,9 @@
 <?php
 
 namespace libraries\huoxing;
+
+use libraries\huoxing\request\Request;
+
 /**
  * 火星来客淘宝联盟超级搜索查询入口
  * @haguo
@@ -91,11 +94,11 @@ class Client
 
     /**
      * 请求
-     * @param  [type] $request [description]
+     * @param  Request $request [description]
      * @param bool $returnArray 是否转JSON源数据转成ARRAY
      * @return bool|string|array        [返回数组或string或布尔值]
      */
-    public function execute($request, $returnArray=TRUE)
+    public function execute($request, $returnArray = TRUE)
     {
         // 获取参数
         $params = array_merge($request->getParams());
@@ -104,14 +107,20 @@ class Client
         //$params['sign'] = $this->generateSign($params);
         $url = $this->reqURI;
         $url .= $request->getMethod();
-        // 读取数据
-        $json = $this->curl($url, $params);
+        $submit = strtolower($request->getSubmitMethod());
+        if (empty($submit) || $submit === 'get') {
+            // 读取数据
+            $json = $this->curl($url, $params);
+        } else {
+            $json = $this->curl_post($url, $params, $request->getHeader(),$request->getCookies());
+        }
+
 
         if (!$json)
             return FALSE;
 
         // 转换成json
-        if($returnArray){
+        if ($returnArray) {
             $rs = json_decode($json, true);
             if (!$rs)
                 return FALSE;
@@ -181,5 +190,54 @@ class Client
         //$data = json_decode ( $result );
         curl_close($ch);
         return $result;
+    }
+
+    /**
+     * @param string $url post请求地址
+     * @param array $params
+     * @param array $header
+     * @param array $cookies
+     * @return mixed
+     */
+    function curl_post($url, array $params = array(), $header = array(),$cookies=array())
+    {
+        $header_tmp = array_change_key_case($header);
+        switch (strtolower($header_tmp['content-type'])) {
+            case 'application/json':
+                $data_string = json_encode($params);
+                break;
+            default:
+                $data_string = http_build_query($params);
+                break;
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        $header_new = [];
+        if (empty($header)) {
+            $header_new[] = 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8';
+        } else {
+            foreach ($header as $k => $v) {
+                $header_new[] = "$k: $v";
+            }
+        }
+        curl_setopt(
+            $ch, CURLOPT_HTTPHEADER, $header_new
+        );
+        $set_cookies='';
+        foreach ($cookies as $k => $v) {
+            $set_cookies.="$k=$v; ";
+        }
+        if ($set_cookies)
+            curl_setopt($ch, CURLOPT_COOKIE, $set_cookies);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return ($data);
+
     }
 }

@@ -20,7 +20,7 @@ class Banner_model extends DaiShu_model
     public function get_all()
     {
         if(isset($this->collection, $this->collection['banner'])){
-            return $this->collection['banner'];
+            return array_values($this->collection['banner'])?:null;
         }
         return null;
     }

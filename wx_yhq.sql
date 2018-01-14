@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.53)
-# Date: 2018-01-06 17:59:22
+# Date: 2018-01-14 14:43:15
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -21,6 +21,8 @@ CREATE TABLE `wx_app` (
   `wx_secret` varchar(255) DEFAULT '' COMMENT '微信secret',
   `dtk_key` varchar(255) DEFAULT '' COMMENT '大淘客KEY',
   `enable` tinyint(3) DEFAULT '0' COMMENT '是否启用',
+  `chaozhi_token` varchar(255) DEFAULT '',
+  `chaozhi_session` varchar(255) DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_email` (`email`),
   KEY `index_key` (`app_key`)
@@ -30,7 +32,7 @@ CREATE TABLE `wx_app` (
 # Data for table "wx_app"
 #
 
-INSERT INTO `wx_app` VALUES (1,'thukyhsu@qq.com','$2y$10$SdKDxfkkoi1Y9BmPEVlxHupo3Zv26Q6ozR9TJf8pTydACakkjIRm6','','1b07005a1582b1efdc5fd97cbe6f8414',1513341689,NULL,1513341689,'','','',1),(2,'1602264241@qq.com','$2y$10$ZzbK0k78xMOxZq3okmN6fumjKN8Xqbb90Xrrc5MQF5Vv0P7.Izx7u','mm_32805119_40744564_164568086','b0548a8e5ad97137a3ba44c7c61fd2d4',1514981627,NULL,1514981627,'wx3d8401f8b9c020f4','768ed0e402667c91450d8ceac0dd8ec8','bs3mmhfk23',1);
+INSERT INTO `wx_app` VALUES (1,'thukyhsu@qq.com','$2y$10$SdKDxfkkoi1Y9BmPEVlxHupo3Zv26Q6ozR9TJf8pTydACakkjIRm6','','1b07005a1582b1efdc5fd97cbe6f8414',1513341689,NULL,1513341689,'','','',1,'',''),(2,'1602264241@qq.com','$2y$10$ZzbK0k78xMOxZq3okmN6fumjKN8Xqbb90Xrrc5MQF5Vv0P7.Izx7u','mm_32805119_40744564_164568086','b0548a8e5ad97137a3ba44c7c61fd2d4',1514981627,NULL,1514981627,'wx3d8401f8b9c020f4','768ed0e402667c91450d8ceac0dd8ec8','bs3mmhfk23',1,'7000210024774d01470ecbbba1d75bc7ee2340a506d7719b35eed0d4b3d1ab324900ecf12845954','1mdi0kagfdtlqskk61j7kojrj5');
 
 #
 # Structure for table "wx_user"

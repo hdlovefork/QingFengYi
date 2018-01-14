@@ -17,4 +17,40 @@ class Home_model extends Page_model
         $res = $this->banner_model->get_all();
         return $res;
     }
+
+    public function homeicons(){
+        $this->load->model("service/{$this->service}/homeicon_model");
+        $res = $this->homeicon_model->get_all();
+        return $res;
+    }
+
+    public function topics(){
+        $this->load->model("service/{$this->service}/topic_model");
+        $res = $this->topic_model->get_all();
+        return $res;
+    }
+
+
+    public function huodong($data)
+    {
+        $this->load->model("service/{$this->service}/huodong_model");
+        $res = $this->huodong_model->get($data);
+        return $res;
+    }
+
+
+    public function topic($data){
+        $this->load->model("service/{$this->service}/topic_model");
+        $res = $this->topic_model->get($data);
+        return $res;
+    }
+
+    /**
+     * 更多优惠，返回一个目录列表
+     */
+    public function category(){
+        $this->load->model("service/{$this->service}/category_model");
+        $res = $this->category_model->get_all();
+        return $res;
+    }
 }

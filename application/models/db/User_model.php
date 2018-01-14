@@ -138,6 +138,8 @@ class User_model extends DB_model
         $cached_value['wx_key'] = $app_data['wx_key'];
         $cached_value['wx_secret'] = $app_data['wx_secret'];
         $cached_value['dtk_key'] = $app_data['dtk_key'];
+        $cached_value['chaozhi_token'] = $app_data['chaozhi_token'];
+        $cached_value['chaozhi_session'] = $app_data['chaozhi_session'];
 
         // scope=16 代表App用户的权限数值
 //        $cached_value['scope'] = ScopeEnum::User;
