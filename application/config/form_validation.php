@@ -206,11 +206,11 @@ $config = array(
             'label' => '微信AppID',
             'rules' => 'required|min_length[10]',
         ),
-        array(
-            'field' => 'wxsecret',
-            'label' => '微信AppSecret',
-            'rules' => 'required|min_length[10]',
-        ),
+//        array(
+//            'field' => 'wxsecret',
+//            'label' => '微信AppSecret',
+//            'rules' => 'required|min_length[10]',
+//        ),
         array(
             'field' => 'tbpid',
             'label' => '淘宝pid',
@@ -229,11 +229,11 @@ $config = array(
                 ),
             ),
         ),
-        array(
-            'field' => 'dtkkey',
-            'label' => '大淘客APIKEY',
-            'rules' => 'required|min_length[10]',
-        ),
+//        array(
+//            'field' => 'dtkkey',
+//            'label' => '大淘客APIKEY',
+//            'rules' => 'required|min_length[10]',
+//        ),
     ),
     //重新设置密码
     'uc/home/setpass' => array(

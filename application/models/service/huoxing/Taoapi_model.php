@@ -83,16 +83,26 @@ class Taoapi_model extends Remote_model
     public function get_rate($data)
     {
         //1：从商品简介中获取userNumId，作为第2步获取评论的参数
-        $jie = $this->get_jie($data['tbid']);
-        $user_num_id = $jie['data']['seller']['userNumId'];
-        if (!$user_num_id) return NULL;
-        //2：获取评论列表
-        $url = "https://rate.tmall.com/list_detail_rate.htm?itemId={$data['tbid']}&sellerId={$user_num_id}&order=3&currentPage={$data['page']}";
+        $user_num_id = $data['user_num_id'];
+        if (!$user_num_id) {
+            $jie = $this->get_jie($data['tbid']);
+            $user_num_id = $jie['data']['seller']['userNumId'];
+        }
+        if ($user_num_id) {
+            //2：获取评论列表
+            $url = "https://rate.tmall.com/list_detail_rate.htm?itemId={$data['tbid']}&sellerId={$user_num_id}&order=3&currentPage={$data['page']}";
+            $res = curl_get($url);
+            //补全JSON数据的格式
+            $res = '{' . $res . '}';
+            //淘宝是GB2312编码，所以需要转换
+            $res = mb_convert_encoding($res, 'UTF-8', 'GB18030');
+            if ($res && ($data = json_decode($res, TRUE))) {
+                return $data['rateDetail'];
+            }
+        }
+        //备用方案：袋鼠优惠券API获取淘宝详情
+        $url = "https://public.immmmmm.com/wxapp/pinglun.php?id={$data['tbid']}&page={$data['page']}";
         $res = curl_get($url);
-        //补全JSON数据的格式
-        $res = '{' . $res . '}';
-        //淘宝是GB2312编码，所以需要转换
-        $res = mb_convert_encoding($res, 'UTF-8', 'GB18030');
         if ($res && ($data = json_decode($res, TRUE))) {
             return $data['rateDetail'];
         }

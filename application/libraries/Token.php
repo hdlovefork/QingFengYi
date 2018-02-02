@@ -13,8 +13,7 @@ class Token
     public function __construct()
     {
         $this->CI = & get_instance();
-        $this->CI->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file', 'key_prefix' => 'wx_'));
-
+        $this->CI->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
     }
 
     /**

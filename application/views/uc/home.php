@@ -13,16 +13,10 @@
     <div class="layui-tab layui-tab-brief" lay-filter="user">
         <ul class="layui-tab-title" id="LAY_mine">
             <li class="layui-this" lay-id="info">我的资料</li>
-            <li lay-id="pass">密码</li>
+            <li lay-id="pass">修改密码</li>
         </ul>
         <div class="layui-tab-content" style="padding: 20px 0;">
             <div class="layui-form layui-form-pane layui-tab-item layui-show">
-                <div class="layui-form-item">
-                    <label for="L_appkey" class="layui-form-label fly-form-label-md">清风易APIKEY</label>
-                    <div class="layui-input-inline">
-                        <span style="margin-left:10px;height: 38px;line-height:38px;color:blue;font-size:18px"><?= $this->auth->app_key ?></span>
-                    </div>
-                </div>
                 <?= form_open('uc') ?>
                 <div class="layui-form-item">
                     <label for="L_wxkey" class="layui-form-label fly-form-label-md">微信AppID</label>
@@ -31,13 +25,13 @@
                         <span class="fly-text-error"><?= form_error('wxkey') ?></span>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label for="L_wxsecret" class="layui-form-label fly-form-label-md">微信AppSecret</label>
-                    <div class="layui-input-inline fly-input-inline-md">
-                        <?= form_input(['id' => "L_wxsecret", 'name' => "wxsecret", 'required' => '', 'data-label' => '微信SECRET', 'lay-verify' => "required|checkLength", 'placeholder' => "微信公众平台申请", 'autocomplete' => "off", 'class' => "layui-input"], set_value('wxsecret') ?: $this->auth->wx_secret) ?>
-                        <span class="fly-text-error"><?= form_error('wxsecret') ?></span>
-                    </div>
-                </div>
+<!--                <div class="layui-form-item">-->
+<!--                    <label for="L_wxsecret" class="layui-form-label fly-form-label-md">微信AppSecret</label>-->
+<!--                    <div class="layui-input-inline fly-input-inline-md">-->
+<!--                        --><?//= form_input(['id' => "L_wxsecret", 'name' => "wxsecret", 'required' => '', 'data-label' => '微信SECRET', 'lay-verify' => "required|checkLength", 'placeholder' => "微信公众平台申请", 'autocomplete' => "off", 'class' => "layui-input"], set_value('wxsecret') ?: $this->auth->wx_secret) ?>
+<!--                        <span class="fly-text-error">--><?//= form_error('wxsecret') ?><!--</span>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="layui-form-item">
                     <label for="L_tbpid" class="layui-form-label fly-form-label-md">淘宝pid</label>
                     <div class="layui-input-inline fly-input-inline-md">
@@ -48,13 +42,13 @@
                         <span class="layui-word-aux">格式：mm_xxx_xxx_xxx</span>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label for="L_dtkkey" class="layui-form-label fly-form-label-md">大淘客APIKEY</label>
-                    <div class="layui-input-inline fly-input-inline-md">
-                        <?= form_input(['id' => "L_dtkkey", 'name' => "dtkkey", 'required' => '', 'data-label' => '大淘客APIKEY', 'lay-verify' => "required|checkLength", 'placeholder' => "大淘客申请的APIKEY", 'autocomplete' => "off", 'class' => "layui-input"], set_value('dtkkey') ?: $this->auth->dtk_key) ?>
-                        <span class="fly-text-error"><?= form_error('dtkkey') ?></span>
-                    </div>
-                </div>
+<!--                <div class="layui-form-item">-->
+<!--                    <label for="L_dtkkey" class="layui-form-label fly-form-label-md">大淘客APIKEY</label>-->
+<!--                    <div class="layui-input-inline fly-input-inline-md">-->
+<!--                        --><?//= form_input(['id' => "L_dtkkey", 'name' => "dtkkey", 'required' => '', 'data-label' => '大淘客APIKEY', 'lay-verify' => "required|checkLength", 'placeholder' => "大淘客申请的APIKEY", 'autocomplete' => "off", 'class' => "layui-input"], set_value('dtkkey') ?: $this->auth->dtk_key) ?>
+<!--                        <span class="fly-text-error">--><?//= form_error('dtkkey') ?><!--</span>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="layui-form-item">
                     <button class="layui-btn" key="set-mine" lay-filter="*" lay-submit>确认修改</button>
                 </div>

@@ -29,9 +29,13 @@ class Query_model extends Dataoke_model
      */
     public function get_quan_info($ids)
     {
+        $this->benchmark->mark('get_quan_info_start');
         $request = new \libraries\daotaoke\request\SingleGoodsGet($this->dtk_key);
-        $request->setId($ids['tbid']);
+        $request->setId($ids['tbid']?:$ids['dtkid']);
         $res = $this->client->execute($request);
+        $this->benchmark->mark('dataoke_get_quan_end');
+//        log_message('DEBUG', "quan_start--->get_quan_info_start:{$this->benchmark->elapsed_time('quan_start', 'get_quan_info_start')}");
+//        log_message('DEBUG', "get_quan_info_start--->dataoke_get_quan_end:{$this->benchmark->elapsed_time('get_quan_info_start', 'dataoke_get_quan_end')}");
         if (!$res || !$res['result']) return null;
         $goods = $res['result'];
         $data = array(

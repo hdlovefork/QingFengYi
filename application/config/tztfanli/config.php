@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = '//wx.cn';
 //$config['base_url'] = '//43721.com';
-$config['base_url'] = '//wx.tztfanli.com';
+$config['base_url'] = 'https://wx.tztfanli.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -385,7 +385,7 @@ $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = APPPATH.'session';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_regenerate_destroy'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

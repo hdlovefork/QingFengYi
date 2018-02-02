@@ -13,7 +13,7 @@ class Api extends Api_Controller
         parent::__construct($config);
         $this->load->helper('http');
         $this->load->driver('cache',
-            array('adapter' => 'apc', 'backup' => 'file', 'key_prefix' => 'wx_')
+            array('adapter' => 'apc', 'backup' => 'file')
         );
         $this->load->config('wx');
         $this->load->library('form_validation');
@@ -82,6 +82,7 @@ class Api extends Api_Controller
     public function quan_get()
     {
 //        $this->output->cache(10);
+//        $this->benchmark->mark('quan_start');
         $this->load->model('page/detail_model');
         $res = $this->detail_model->get_quan_info($this->get());
         $this->response($res);
@@ -145,11 +146,20 @@ class Api extends Api_Controller
     }
 
     /**
-     * 商品列表页顶部导航菜单
+     * 大白菜商品列表页顶部导航菜单
      */
-    public function listnav_get(){
+    public function dabaicai_list_nav_get(){
         $this->load->model('page/list_model');
-        $res = $this->list_model->list_nav();
+        $res = $this->list_model->dabaicai_list_nav();
+        $this->response($res);
+    }
+
+    /**
+     * 大白菜某分类下的商品
+     */
+    public function dabaicai_goods_get(){
+        $this->load->model('page/list_model');
+        $res = $this->list_model->dabaicai_goods($this->get());
         $this->response($res);
     }
 }

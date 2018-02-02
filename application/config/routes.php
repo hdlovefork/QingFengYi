@@ -58,6 +58,7 @@ $route['demo']='home/demo';
 
 //登录、注册、退出
 $route['login'] = 'home/login';
+
 $route['reg'] = 'home/register';
 $route['logout'] = 'uc/home/logout';
 
@@ -77,4 +78,8 @@ $route['vercode']['post'] = 'home/vercode';
 $route['checkemail']['post']='home/check_email';
 
 //用户中心
-$route['uc/(:any)'] = 'uc/home/$1';
+//$route['uc/(:any)'] = 'uc/$1';
+
+//微信通知
+$route['wxticket'] = 'weixin/wxticket';
+$route['wxmsg/(:any)'] = 'weixin/wxmsg/$1';

@@ -1,4 +1,5 @@
 <?php
+
 use Gregwar\Captcha\CaptchaBuilder;
 
 /**
@@ -20,14 +21,15 @@ class Home extends Front_Controller
         $this->view('home');
     }
 
-    public function demo(){
-       $this->view('demo');
+    public function demo()
+    {
+        $this->view('demo');
     }
 
     public function register()
     {
         $this->load->library('auth');
-        if($this->auth->check_auth()){
+        if ($this->auth->check_auth()) {
             redirect('uc');
         }
         if ($this->input->method() === 'post') {
@@ -54,7 +56,7 @@ class Home extends Front_Controller
     public function login()
     {
         $this->load->library('auth');
-        if($this->auth->check_auth()){
+        if ($this->auth->check_auth()) {
             redirect('uc');
         }
         if ($this->input->method() === 'post') {
@@ -73,8 +75,9 @@ class Home extends Front_Controller
                         redirect('login');
                     } else {
                         //登录成功，保存到session变量中
-                        $this->load->library(['auth','session']);
+                        $this->load->library(['auth', 'session']);
                         $this->auth->login($app);
+                        $this->success('欢迎您回来！');
                         session_commit();
                         redirect('uc');
                     }
@@ -176,16 +179,15 @@ class Home extends Front_Controller
                 } else {
                     $this->load->model('db/app_model');
                     //向数据库写入新密码
-                    if($this->app_model->modify_pwd($app_id,$this->input->post('pass'))){
+                    if ($this->app_model->modify_pwd($app_id, $this->input->post('pass'))) {
                         $this->success('密码修改成功！');
                         redirect('login');
-                    }else{
+                    } else {
                         $this->error('密码修改失败！');
                         $this->view('resetpass');
                     }
                 }
-            }
-            //允许重置密码显示重置密码页面
+            } //允许重置密码显示重置密码页面
             else {
                 $this->view('resetpass');
             }
@@ -201,7 +203,7 @@ class Home extends Front_Controller
     public function forget()
     {
         $this->load->library('auth');
-        if($this->auth->check_auth()){
+        if ($this->auth->check_auth()) {
             redirect('uc');
         }
         if ($this->input->method() === "post") {

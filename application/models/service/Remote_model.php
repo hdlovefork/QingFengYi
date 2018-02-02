@@ -12,7 +12,7 @@ abstract class Remote_model extends CI_Model
     {
         parent::__construct();
         $this->load->helper('http');
-        $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file', 'key_prefix' => 'wx_'));
+        $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
     }
 
     function format_ErrorJson($checkLogin)

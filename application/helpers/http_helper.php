@@ -18,6 +18,9 @@ function curl_get($url, &$httpCode = 0)
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
     curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION,TRUE);
+//    curl_setopt($ch,CURLOPT_USERAGENT,'wechatdevtools appservice port/9974');
+//    curl_setopt($ch,CURLOPT_REFERER,'https://servicewechat.com/wx3d8401f8b9c020f4/devtools/page-frame.html');
+
     $file_contents = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);

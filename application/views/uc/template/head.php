@@ -35,6 +35,7 @@
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="<?=base_url('uc')?>"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a href="<?=base_url('uc/wxauth')?>"><i class="layui-icon">&#xe612;</i>授权信息</a></dd>
                     <hr style="margin: 5px 0;">
                     <dd><a href="<?=base_url('logout')?>" style="text-align: center;">退出</a></dd>
                 </dl>

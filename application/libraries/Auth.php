@@ -19,6 +19,9 @@ class Auth
     //保存用户名所使用的KEY
     protected $username_key = 'email';
 
+    //表名称
+    protected $table_name = 'app';
+
     private $CI;
 
     public function __construct($params = [])
@@ -55,7 +58,7 @@ class Auth
      */
     public function logout($redirect = '')
     {
-        $this->CI->session->unset_userdata($this->session_key);
+        $this->CI->session->sess_destroy();
         if ($redirect) {
             $this->CI->load->helper('url');
             redirect($redirect);

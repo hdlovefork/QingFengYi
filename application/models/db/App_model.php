@@ -15,9 +15,13 @@ class App_model extends DB_model
         parent::__construct();
     }
 
-    public function get_app($app_key)
+    /**
+     * @param $app_id 可以是微信的APPKEY或者是应用的ID
+     * @return mixed
+     */
+    public function get_app($app_id)
     {
-        $query = $this->db->limit(1)->where('app_key', $app_key)->get(self::TABLE_APP);
+        $query = $this->db->where('id',$app_id)->get(self::TABLE_APP);
         return $query->row_array();
     }
 
@@ -31,13 +35,34 @@ class App_model extends DB_model
         return $this->db->get_where(self::TABLE_APP, ['email' => $email], 1)->row_array();
     }
 
-    public function update_key($id,$data){
+
+    public function update_key($id, $data)
+    {
         $update_data['wx_key'] = trim($data['wxkey']);
         $update_data['wx_secret'] = trim($data['wxsecret']);
         $update_data['tb_pid'] = trim($data['tbpid']);
         $update_data['dtk_key'] = trim($data['dtkkey']);
         $update_data['update_time'] = mktime();
-        return $this->db->update(self::TABLE_APP,$update_data,['id'=>$id]);
+        return $this->db->update(self::TABLE_APP, $update_data, ['id' => $id]);
+    }
+
+    /**
+     * 更新微信授权访问令牌和刷新令牌
+     * @param $id
+     * @param $data
+     * @return mixed
+     */
+    public function update_token($id, $data)
+    {
+        $arr['authorizer_access_token'] = $data['authorizer_access_token'];
+        $arr['authorizer_refresh_token'] = $data['authorizer_refresh_token'];
+        $arr['expires_in'] = $data['expires_in'];
+        $arr['authorizer_appid'] = $data['authorizer_appid'];
+
+        $json = json_encode($arr);
+
+        $update_data['wx_authorizer_access_token'] = $json;
+        return $this->db->update(self::TABLE_APP, $update_data, ['id' => $id]);
     }
 
     /**
@@ -76,7 +101,7 @@ class App_model extends DB_model
         if ($row && $row['password']) {
             if ($origin) {
                 //原始比较密码
-                if($row['password'] === $password){
+                if ($row['password'] === $password) {
                     unset($row['password']);
                     return $row;
                 }
@@ -100,11 +125,15 @@ class App_model extends DB_model
      * @param $new_pwd
      * @return mixed
      */
-    public function modify_pwd($app_id,$new_pwd){
-        return $this->db->where('id',$app_id)->update(self::TABLE_APP,[
-            'password'=>password_hash($new_pwd, PASSWORD_BCRYPT,['cost'=>10])
+    public function modify_pwd($app_id, $new_pwd)
+    {
+        return $this->db->where('id', $app_id)->update(self::TABLE_APP, [
+            'password' => password_hash($new_pwd, PASSWORD_BCRYPT, ['cost' => 10])
         ]);
     }
 
+    public function refresh_token(){
+        echo 'ok';die;
+    }
 
 }

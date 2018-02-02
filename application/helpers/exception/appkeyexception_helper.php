@@ -10,5 +10,5 @@ class AppKeyException extends BaseException
 {
     public $http_code = 403;
     public $error_code = 10002;
-    public $error_msg  = 'APPKEY不存在';
+    public $error_msg  = '小程序不存在';
 }

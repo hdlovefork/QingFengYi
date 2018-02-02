@@ -1,7 +1,6 @@
 <?php
 
 
-
 require_once(APPPATH . 'libraries/REST_Controller.php');
 
 //自动加载类
@@ -16,7 +15,7 @@ class ImportHelper
         if (file_exists($filename)) {
             // log_message('DEBUG', "成功加载：{$filename}");
             include $filename;
-        }else{
+        } else {
             // log_message('DEBUG', "加载不成功：{$filename}");
         }
     }
@@ -186,7 +185,7 @@ class Base_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper(['url', 'common']);
+        $this->load->helper(['url', 'common', 'form']);
         $this->load->config('app');
         if (ENVIRONMENT === 'development') {
             $this->output->enable_profiler(TRUE);
@@ -247,7 +246,7 @@ class UC_Controller extends Base_Controller
         $this->load->library('auth');
         //判断用户是否已经登录
         if (!($this->cert = $this->auth->check_auth())) {
-            //用户未登录
+            //用户未登录，记录跳回地址
             redirect('login');
         }
     }

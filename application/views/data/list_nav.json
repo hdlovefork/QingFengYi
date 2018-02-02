@@ -1,27 +1,27 @@
 {
   "category": [
     {
-      "cid": 1,
+      "cid": 2,
       "url": "http://public.immmmmm.com/images/icon/ke_meizhuang.jpg",
       "name": "化妆品"
     },
     {
-      "cid": 2,
+      "cid": 1,
       "url": "http://public.immmmmm.com/images/icon/ke_nvzhuang.jpg",
       "name": "女装"
     },
     {
-      "cid": 3,
+      "cid": 5,
       "url": "http://public.immmmmm.com/images/icon/ke_nanzhuang.jpg",
       "name": "男装"
     },
     {
-      "cid": 4,
+      "cid": 3,
       "url": "http://public.immmmmm.com/images/icon/ke_neiyi.jpg",
       "name": "内衣"
     },
     {
-      "cid": 5,
+      "cid": 4,
       "url": "http://public.immmmmm.com/images/icon/ke_muying.jpg",
       "name": "母婴"
     },
@@ -51,5 +51,5 @@
       "name": "数码家电"
     }
   ],
-  "curCid": 1
+  "curCid": 2
 }

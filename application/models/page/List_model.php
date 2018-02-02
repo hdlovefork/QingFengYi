@@ -15,9 +15,24 @@ class List_model extends Page_model
 {
     protected $service = 'daishu';
 
-    public function list_nav(){
+    /**
+     * 大白菜商品列表导航
+     * @return mixed
+     */
+    public function dabaicai_list_nav(){
         $this->load->model("service/{$this->service}/category_model");
-        $res = $this->category_model->list_nav();
+        $res = $this->category_model->dabaicai_list_nav();
+        return $res;
+    }
+
+    /**
+     * 获取大白菜某分类下的商品
+     * @param $data ['page','cid']
+     * @return mixed|null
+     */
+    public function dabaicai_goods($data){
+        $this->load->model("service/{$this->service}/category_model");
+        $res = $this->category_model->dabaicai_goods($data);
         return $res;
     }
 }

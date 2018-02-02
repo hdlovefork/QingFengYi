@@ -11,7 +11,6 @@ class Home extends UC_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('form');
     }
 
     public function index()
@@ -24,7 +23,7 @@ class Home extends UC_Controller
                 $this->load->model('db/app_model');
                 if($this->app_model->update_key($this->auth->id,$this->input->post())){
                     //更新session中的app数据，否则前台还是显示空数据，因为前台读取的是session值
-                    $app = $this->app_model->get_app($this->auth->app_key);
+                    $app = $this->app_model->get_app($this->auth->id);
                     $this->auth->login($app);
                     $this->success('保存成功！');
                     redirect('uc');
@@ -34,10 +33,6 @@ class Home extends UC_Controller
                 }
             }
         }else{
-            if (!$this->session->has_userdata('welcome')) {
-                $this->success('欢迎您回来！');
-                $this->session->set_userdata('welcome', TRUE);
-            }
             $this->view('home');
         }
     }
@@ -61,7 +56,6 @@ class Home extends UC_Controller
         }
     }
 
-
     /**
      * 用户退出
      */
@@ -69,4 +63,5 @@ class Home extends UC_Controller
     {
         $this->auth->logout('login');
     }
+
 }

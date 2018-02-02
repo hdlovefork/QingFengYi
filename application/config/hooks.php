@@ -12,6 +12,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$hook['pre_system'] = function (){
+$hook['pre_system'] = function () {
     date_default_timezone_set('PRC');
 };
+
+$hook['wx_refresh_token'] = [
+    'class'=> 'Hook_points',
+    'function'=>'refresh_token',
+    'filename'=>'Hook_points.php',
+    'filepath'=>'hooks',
+];
