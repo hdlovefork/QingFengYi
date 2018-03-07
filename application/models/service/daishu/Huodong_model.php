@@ -121,7 +121,8 @@ class Huodong_model extends Remote_model
      * @param $data
      * @return mixed|null 与ssxiaobang()方法返回值相同
      */
-    public function calculate($data){
+    public function calculate($data)
+    {
         $url = "https://public.immmmmm.com/wxapp/dataoke.php?huodong=calculate&page={$data['page']}&px={$data['px']}";
         $res = curl_get($url);
         return $this->json_to_array($res);
@@ -132,8 +133,9 @@ class Huodong_model extends Remote_model
      * @param $data
      * @return mixed|null 与ssxiaobang()方法返回值相同
      */
-    public function video($data){
-        $url ="https://public.immmmmm.com/wxapp/dataoke.php?huodong=video&page={$data['page']}&px={$data['px']}";
+    public function video($data)
+    {
+        $url = "https://public.immmmmm.com/wxapp/dataoke.php?huodong=video&page={$data['page']}&px={$data['px']}";
         $res = curl_get($url);
         return $this->json_to_array($res);
     }
@@ -143,8 +145,9 @@ class Huodong_model extends Remote_model
      * @param $data
      * @return mixed|null 与ssxiaobang()方法返回值相同
      */
-    public function haitao($data){
-        $url ="https://public.immmmmm.com/wxapp/dataoke.php?huodong=haitao&page={$data['page']}&px={$data['px']}";
+    public function haitao($data)
+    {
+        $url = "https://public.immmmmm.com/wxapp/dataoke.php?huodong=haitao&page={$data['page']}&px={$data['px']}";
         $res = curl_get($url);
         return $this->json_to_array($res);
     }
@@ -154,9 +157,34 @@ class Huodong_model extends Remote_model
      * @param $data
      * @return mixed|null 与ssxiaobang()方法返回值相同
      */
-    public function ershijiu($data){
-        $url ="https://public.immmmmm.com/wxapp/dataoke.php?huodong=ershijiu&page={$data['page']}&px={$data['px']}";
+    public function ershijiu($data)
+    {
+        $url = "https://public.immmmmm.com/wxapp/dataoke.php?huodong=ershijiu&page={$data['page']}&px={$data['px']}";
         $res = curl_get($url);
+        return $this->json_to_array($res);
+    }
+
+    /**
+     * 九块九包邮
+     * @param $data
+     * @return mixed|null 与ssxiaobang()方法返回值相同
+     */
+    public function jiu($data)
+    {
+        $url = "https://public.immmmmm.com/wxapp/dataokes.php?huodong=jiu&page={$data['page']}&px={$data['px']}";
+        $res = curl_get($url);
+        return $this->json_to_array($res);
+    }
+
+    /**
+     * 搜索宝贝——高额搜——搜索热门关键字
+     * @param $data array ['keywords'=>'urlencode关键字','page'=>'页数','px'=>'排序方式']
+     * @return mixed|null
+     */
+    public function search($data){
+        $keywords = urlencode($data['keywords']);
+        $url = "https://public.immmmmm.com/wxapp/dataokes.php?huodong=search&keywords={$keywords}&page={$data['page']}&px={$data['px']}";
+        $res=curl_get($url);
         return $this->json_to_array($res);
     }
 }

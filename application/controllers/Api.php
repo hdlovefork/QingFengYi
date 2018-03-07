@@ -68,6 +68,12 @@ class Api extends Api_Controller
         $this->response($res);
     }
 
+    public function topic_get(){
+        $this->load->model(['page/home_model']);
+        $res = $this->home_model->topic($this->get());
+        $this->response($res);
+    }
+
     /**
      * 搜索商品
      * @param $keyword string 商品名称
@@ -160,6 +166,15 @@ class Api extends Api_Controller
     public function dabaicai_goods_get(){
         $this->load->model('page/list_model');
         $res = $this->list_model->dabaicai_goods($this->get());
+        $this->response($res);
+    }
+
+    /**
+     * 热搜关键字
+     */
+    public function reso_get(){
+        $this->load->model('page/search_model');
+        $res = $this->search_model->reso();
         $this->response($res);
     }
 }

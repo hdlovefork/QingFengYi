@@ -26,24 +26,33 @@ class Taoapi_model extends Remote_model
     {
         //1：获取二合一地址
         $two_one_url = $this->get_two_one($data);
-        if (!$two_one_url) return null;
+        if (!$two_one_url) return NULL;
         //转换成高佣链接
-        $this->load->library('token');
+        $this->load->library(['token', 'taogy']);
         $pid = $this->token->get_data('tb_pid') ?: 'mm_32805119_40744564_164568086';
         $tbid = $data['tbid'];
-        $chaozhi_token = $this->token->get_data('chaozhi_token');
-        $chaozhi_session = $this->token->get_data('chaozhi_session');
-        $request = new libraries\chaozhi\request\GaoYongGet();
-        $request->addCookie('PHPSESSID', $chaozhi_session);
-        $request->setPid($pid)->setToken($chaozhi_token)->setTbID($tbid);
-        $client = new \libraries\chaozhi\Client();
-        $res = $client->execute($request);
-        if (!$res['result']['data']['coupon_click_url']) {
-            log_message('DEBUG', '获取高佣失败');
-        } else {
-            $two_one_url = $res['result']['data']['coupon_click_url'];
-        }
+//        $chaozhi_token = $this->token->get_data('chaozhi_token');
+//        $chaozhi_session = $this->token->get_data('chaozhi_session');
+//        $request = new libraries\chaozhi\request\GaoYongGet();
+//        $request->addCookie('PHPSESSID', $chaozhi_session);
+//        $request->setPid($pid)->setToken($chaozhi_token)->setTbID($tbid);
+//        $client = new \libraries\chaozhi\Client();
+//        $res = $client->execute($request);
+//        if (!$res['result']['data']['coupon_click_url']) {
+//            log_message('DEBUG', '获取高佣失败');
+//        } else {
+//            $two_one_url = $res['result']['data']['coupon_click_url'];
+//        }
         // $two_one_url =  $res['result']['data']['coupon_click_url'] ?: $two_one_url;
+
+        //获取淘宝授权访问令牌中的access_token字段
+        $tb_access_token_json = $this->token->get_data('tb_access_token');
+        $tb_access_token_arr = json_decode($tb_access_token_json, TRUE);
+        $tmp_two_one_url = $this->taogy->get_url($tbid, $pid, $tb_access_token_arr['access_token']);
+        if(!$tmp_two_one_url){
+            log_message('DEBUG', "tbid:{$tbid}，pid:{$pid}，获取高佣失败");
+        }
+        $two_one_url = $tmp_two_one_url  ?: $two_one_url;
         //获取商品信息
         $logo = $data['logo'];
         $title = $data['title'];

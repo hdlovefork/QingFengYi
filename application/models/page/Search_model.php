@@ -61,4 +61,13 @@ class Search_model extends Page_model
 
 
     }
+
+    /**
+     * 热门搜索关键字
+     * @return mixed|null
+     */
+    public function reso(){
+        $this->load->model("service/{$this->service}/query_model");
+        return $this->query_model->reso();
+    }
 }

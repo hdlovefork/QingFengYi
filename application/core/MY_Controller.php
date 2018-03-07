@@ -258,4 +258,13 @@ class UC_Controller extends Base_Controller
         $this->load->view("uc/$view", $vars, $return);
         $this->load->view('uc/template/foot');
     }
+
+    /**
+     * 刷新session中的用户信息
+     */
+    public function refresh_app_info(){
+        $this->load->model('db/app_model');
+        $user_info = $this->app_model->get_by_email($this->auth->get('email'));
+        $this->auth->login($user_info);
+    }
 }

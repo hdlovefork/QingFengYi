@@ -10,7 +10,7 @@ $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'smtp.qq.com';
 $config['smtp_user'] ='qfy@tztfanli.com';
 $config['smtp_pass'] ='yipoendbcxkqgadj';
-$config['crlf'] = PHP_EOL;
-$config['newline'] = PHP_EOL;
+$config['crlf'] = "\r\n";
+$config['newline'] = "\r\n";
 
 

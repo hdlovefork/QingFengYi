@@ -11,7 +11,7 @@
  * 类似于内置Input类，用于读取输入的数据
  * Class InputEx
  */
-class InputEx
+class Inputex
 {
     //Format 对象
     private $format;

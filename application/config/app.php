@@ -23,6 +23,18 @@ $config['app_token_expire_in'] = 7200;
 $config['app_dtk_key'] = 'bs3mmhfk2w';
 
 
+/**********小程序设置************/
+
+//小程序版本号，用于用户授权时上传
+$config['app_cur_version'] = '';
+
+//小程序描述，用于用户授权时上传
+$config['app_cur_desc'] = '';
+
+//小程序模板号
+$config['app_cur_temp_id'] = '3';
+
+
 
 
 

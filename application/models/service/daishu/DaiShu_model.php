@@ -156,7 +156,7 @@ class DaiShu_model extends Remote_model
      */
     public function home_init()
     {
-        $url='https://public2.immmmmm.com/ali_1111_410451357_1555/collocation2.php?banben=V14.9';
+        $url='https://public2.immmmmm.com/ali_1111_410451357_1555/collocation2.php?banben=V14.9.9';
         $res = curl_get($url, $http_code);
         if ($http_code === 200 && $res) {
             $this->collection = $this->json_to_array($res);

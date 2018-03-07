@@ -137,7 +137,6 @@ class Weixinapi
         return $url;
     }
 
-
     public function json_to_array($json)
     {
         $res = json_decode($json, TRUE);
@@ -194,7 +193,6 @@ class Weixinapi
         return $auth_info;
     }
 
-
     /**
      * 获取已授权小程序的信息
      * @param $third_appid string 第三方服务APPID
@@ -238,11 +236,49 @@ class Weixinapi
         $params['downloaddomain'] = $domains;
         $res_json = curl_post($url, $params);
         $res = $this->json_to_array($res_json);
-        if (!$res || $res['errcode'] != 0) {
-            log_message('debug', 'set_domain--->'.PHP_EOL.var_export($res,TRUE));
+        if (!$res OR $res['errcode'] != 0) {
+            log_message('debug', 'set_domain--->' . PHP_EOL . var_export($res, TRUE));
             return FALSE;
         }
         return TRUE;
+    }
+
+    /**
+     * 为授权的小程序帐号上传小程序代码
+     * @param $access_token string 请使用第三方平台获取到的该小程序授权的authorizer_access_token
+     * @param $template_id string 代码库中的代码模版ID
+     * @param $ext_json string 第三方自定义的配置
+     * @param $user_version string 代码版本号，开发者可自定义
+     * @param $user_desc string 代码描述，开发者可自定义
+     * @link https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1489140610_Uavc4&token=&lang=
+     * @return bool
+     */
+    public function commit_code($access_token, $template_id, $ext_json, $user_version, $user_desc)
+    {
+        $url = "https://api.weixin.qq.com/wxa/commit?access_token={$access_token}";
+        if (is_array($ext_json)) {
+            $ext_json = json_encode($ext_json);
+        }
+        $params['template_id'] = $template_id;
+        $params['ext_json'] = $ext_json;
+        $params['user_version'] = $user_version;
+        $params['user_desc'] = $user_desc;
+        $res = curl_post($url, $params);
+        if (!$res OR $res['errcode'] != 0) {
+            log_message('DEBUG', 'Weixinapi->commit_code()--->' . PHP_EOL . $res);
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+
+    /**
+     * 获取体验小程序的体验二维码
+     * @param $access_token string 请使用第三方平台获取到的该小程序授权的authorizer_access_token
+     * @return string 返回二维码下载地址
+     */
+    public function get_qrcode_url($access_token){
+        return "https://api.weixin.qq.com/wxa/get_qrcode?access_token={$access_token}";
     }
 
     /**

@@ -33,7 +33,7 @@ class Home extends Front_Controller
             redirect('uc');
         }
         if ($this->input->method() === 'post') {
-            $this->load->library(['form_validation', 'session', 'inputex']);
+            $this->load->library(['form_validation', 'session', 'Inputex']);
             if ($this->form_validation->run() === FALSE) {
                 $this->view('register');
             } else {
@@ -93,7 +93,7 @@ class Home extends Front_Controller
      */
     public function vercode()
     {
-        $this->load->library(['inputex', 'form_validation']);
+        $this->load->library(['Inputex', 'form_validation']);
         $this->load->helper('common');//加载JSON函数
         $this->load->library('session');
 
@@ -103,7 +103,7 @@ class Home extends Front_Controller
 
         $this->form_validation->set_data($this->inputex->post());
         if ($this->form_validation->run('group_email') === FALSE) {
-            json(['success' => false, 'error_msg' => form_error('email')]);
+            json(['success' => FALSE, 'error_msg' => form_error('email')]);
         }
         //验证邮箱地址是否有效
         $this->load->helper('string');
@@ -245,7 +245,7 @@ class Home extends Front_Controller
     function check_email()
     {
         $this->load->helper('common');
-        $this->load->library(['form_validation', 'inputex']);
+        $this->load->library(['form_validation', 'Inputex']);
         //使用自定义类库inputex才能获取到POST的JSON数据
         $this->form_validation->set_data($this->inputex->post());
         if ($this->form_validation->run('group_email') === FALSE) {
@@ -310,5 +310,11 @@ class Home extends Front_Controller
         $builder->build();
         header('Content-type: image/jpeg');
         $builder->output();
+    }
+
+    public function t(){
+        $arr = range(1, 10);
+        array_splice($arr,4,count($arr),[1,2,3]);
+        var_dump($arr);
     }
 }

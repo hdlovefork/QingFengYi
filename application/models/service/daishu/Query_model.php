@@ -57,4 +57,28 @@ class Query_model extends DaiShu_model
         return null;
     }
 
+    /**
+     * 热门搜索关键字
+     * @return mixed|null
+array (
+  'er_code' => 10000,
+  'er_msg' => '请求成功',
+  'data' =>
+  array (
+    0 =>
+    array (
+      'rank' => '1',
+      'word' => '羽绒服',
+      'total' => '28006',
+      'change' => '0',
+    )
+  ),
+)
+     */
+    public function reso(){
+        $url = 'https://public.immmmmm.com/wxapp/reso.php';
+        $res = curl_get($url);
+        return $this->json_to_array($res);
+    }
+
 }

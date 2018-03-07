@@ -21,7 +21,7 @@ class App_model extends DB_model
      */
     public function get_app($app_id)
     {
-        $query = $this->db->where('id',$app_id)->get(self::TABLE_APP);
+        $query = $this->db->where('id', $app_id)->get(self::TABLE_APP);
         return $query->row_array();
     }
 
@@ -63,6 +63,16 @@ class App_model extends DB_model
 
         $update_data['wx_authorizer_access_token'] = $json;
         return $this->db->update(self::TABLE_APP, $update_data, ['id' => $id]);
+    }
+
+    public function update_tb_token($id, $token_json_str)
+    {
+        return $this->db->update(self::TABLE_APP,
+            [
+                'tb_access_token'=>$token_json_str
+            ],
+            ['id' => $id]
+        );
     }
 
     /**
@@ -132,8 +142,10 @@ class App_model extends DB_model
         ]);
     }
 
-    public function refresh_token(){
-        echo 'ok';die;
+    public function refresh_token()
+    {
+        echo 'ok';
+        die;
     }
 
 }
